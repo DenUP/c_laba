@@ -1,3 +1,10 @@
 {
-    "C_Cpp.errorSquiggles": "disabled"
+    "C_Cpp.errorSquiggles": "disabled",
+    "code-runner.runInTerminal": true,
+    "code-runner.saveFileBeforeRun": true,
+    "code-runner.ignoreSelection": true,
+    "code-runner.preserveFocus": false,
+    "code-runner.executorMap": {
+        "cpp": "cd \"$dir\" && mkdir -p .build && /usr/bin/clang++ -std=c++17 -g \"$fileName\" -o \".build/$fileNameWithoutExt\" && \".build/$fileNameWithoutExt\""
+    }
 }
