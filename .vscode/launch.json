@@ -2,17 +2,26 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "clang++ - Build and debug active file",
+            "name": "C++: Debug (macOS Terminal)",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${fileDirname}/${fileBasenameNoExtension}",
+            "program": "${fileDirname}/.build/${fileBasenameNoExtension}",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
             "environment": [],
-            "externalConsole": false,
-            "console": "integratedTerminal",
+            "externalConsole": true,
             "MIMode": "lldb",
+            "preLaunchTask": "C/C++: clang++ build active file"
+        },
+        {
+            "name": "C++: Debug (integrated terminal, CodeLLDB)",
+            "type": "lldb",
+            "request": "launch",
+            "program": "${fileDirname}/.build/${fileBasenameNoExtension}",
+            "args": [],
+            "cwd": "${fileDirname}",
+            "terminal": "integrated",
             "preLaunchTask": "C/C++: clang++ build active file"
         }
     ]
