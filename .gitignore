@@ -1,0 +1,8 @@
+# Local build outputs and debug symbols
+.build/
+*.dSYM/
+*.o
+
+# macOS and editor-generated files
+.DS_Store
+.vscode/ipch/
