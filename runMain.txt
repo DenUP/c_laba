@@ -1,0 +1,1 @@
+cd "/Users/denis/dev/cpp/" && g++ main1.cpp -o main && "/Users/denis/dev/cpp/"main
