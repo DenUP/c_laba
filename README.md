@@ -2,6 +2,7 @@
 
 ![C++17](https://img.shields.io/badge/C%2B%2B-17-00599C?logo=c%2B%2B&logoColor=white)
 ![macOS](https://img.shields.io/badge/macOS-Apple%20Silicon-222222?logo=apple&logoColor=white)
+![Windows 11](https://img.shields.io/badge/Windows-11-0078D4?logo=windows&logoColor=white)
 ![VS Code](https://img.shields.io/badge/VS%20Code-ready-007ACC?logo=visualstudiocode&logoColor=white)
 
 Мой учебный репозиторий по программированию на C/C++ в ННГАСУ. Здесь хранятся лабораторные работы, самостоятельные попытки и эксперименты. Код сохраняется в том виде, в котором я его написал, чтобы видеть свой прогресс и разбирать ошибки.
@@ -22,7 +23,7 @@
 
 В `lab6/` сохранены обе версии задания №1 (`lab6_1.cpp` и `lab_6_1.cpp`): они отражают разные попытки и намеренно не объединены.
 
-## ▶️ Запуск одной кнопкой
+## ▶️ Запуск на macOS
 
 Для macOS в проекте настроен компилятор `/usr/bin/clang++` с C++17.
 
@@ -46,6 +47,37 @@
 3. Нажми зелёную кнопку запуска в панели Run and Debug.
 
 Это отдельный режим, он нужен для проверки переменных и пошагового выполнения, а не для обычного запуска.
+
+## 🪟 Запуск на Windows 11
+
+Для Windows в проекте добавлен отдельный профиль **C++: Debug (Windows 11, MinGW-w64)**. Конфигурации macOS сохранены без изменений.
+
+### Установка компилятора и отладчика
+
+1. Установи [MSYS2](https://www.msys2.org/) (обычный путь установки: `C:\msys64`).
+2. Открой терминал **MSYS2 UCRT64** и установи набор инструментов командой:
+
+   ```bash
+   pacman -S --needed base-devel mingw-w64-ucrt-x86_64-toolchain
+   ```
+
+3. Добавь `C:\msys64\ucrt64\bin` в переменную среды Windows **Path** и полностью перезапусти VS Code.
+4. В терминале VS Code проверь `g++ --version` и `gdb --version`. Обе команды должны работать.
+
+Официальная инструкция: [VS Code - C++ с MinGW](https://code.visualstudio.com/docs/cpp/config-mingw).
+
+### Сборка и запуск
+
+1. Открой **всю папку репозитория** в VS Code и установи расширение **C/C++** от Microsoft (`ms-vscode.cpptools`).
+2. Открой нужный файл `.cpp` (каждый файл содержит свой `main()`).
+3. Для запуска с отладкой открой **Run and Debug**, выбери **C++: Debug (Windows 11, MinGW-w64)** и нажми **F5**. Программа с вводом `cin` или `scanf` работает во встроенном терминале.
+4. Для обычного запуска без отладки выбери **Terminal → Run Task… → C++: Build and run active file (Windows terminal)**.
+
+Windows использует `g++.exe` и `gdb.exe` из **Path**. Если появляется ошибка «g++/gdb not found», проверь установку MSYS2, путь `C:\msys64\ucrt64\bin` и перезапуск VS Code.
+
+Как и на macOS, каждый файл собирается отдельно в `.build/` рядом с исходником. На Windows исполняемый файл получает расширение `.exe`; содержимое `.build/` игнорируется Git.
+
+> **Важно:** кнопка расширения Code Runner **Run Code ▶** в текущих настройках проекта настроена под macOS и `/usr/bin/clang++`. На Windows для предсказуемого запуска используй профиль **F5** или задачу из меню **Run Task**.
 
 ## 🛠️ Что происходит при запуске
 
