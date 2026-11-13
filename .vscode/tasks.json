@@ -31,6 +31,63 @@
                 "panel": "dedicated",
                 "focus": true
             }
+        },
+        {
+            "type": "shell",
+            "label": "C/C++: prepare .build directory (Windows)",
+            "command": "if not exist .build mkdir .build",
+            "options": {
+                "cwd": "${fileDirname}",
+                "shell": {
+                    "executable": "cmd.exe",
+                    "args": [
+                        "/d",
+                        "/c"
+                    ]
+                }
+            },
+            "problemMatcher": [],
+            "hide": true
+        },
+        {
+            "type": "process",
+            "label": "C/C++: g++ build active file (Windows)",
+            "command": "g++.exe",
+            "args": [
+                "-std=c++17",
+                "-g",
+                "${file}",
+                "-o",
+                "${fileDirname}/.build/${fileBasenameNoExtension}.exe"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "dependsOn": [
+                "C/C++: prepare .build directory (Windows)"
+            ],
+            "dependsOrder": "sequence",
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "type": "process",
+            "label": "C++: Build and run active file (Windows terminal)",
+            "command": "${fileDirname}/.build/${fileBasenameNoExtension}.exe",
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "dependsOn": [
+                "C/C++: g++ build active file (Windows)"
+            ],
+            "dependsOrder": "sequence",
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated",
+                "focus": true
+            }
         }
     ]
 }
