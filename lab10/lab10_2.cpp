@@ -7,12 +7,12 @@ int main()
     // итоговое значение будет 4
     unsigned char uc = 250;
     uc = uc + 10;
-    std::cout << uc << std::endl;
+    std::cout << static_cast<int>(uc) << std::endl;
     // диапазон у него -128 и 127
     // 130 - 256 = -126 получается значение
     signed char sc = 120;
     sc += 10;
-    std::cout << sc << std::endl;
+    std::cout << static_cast<int>(sc) << std::endl;
 
     int result = uc + sc;
     std::cout << "Итоговый результат: " << result << std::endl;
